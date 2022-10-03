@@ -1,14 +1,29 @@
-import logo from "./logo.png";
+import logo1 from "./logo1.png";
+import Dictionary from "./Dictionary";
 import "./App.css";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="KarinNaor-logo img-fluid" alt="logo"></img>
-      </header>
+      <div className="container">
+        <header className="App-header">
+          <img
+            src={logo1}
+            className="KarinNaor-logo img-fluid"
+            alt="logo"
+          ></img>
+        </header>
+        <main>
+          <Dictionary />
+        </main>
+        <footer className="App-footer text-center">
+          Coded by Karin Naor and is
+          <a href="https://github.com/Karinnaor/karins-dictionary-project">
+            {" "}
+            open sourced on GitHub
+          </a>
+        </footer>
+      </div>
     </div>
   );
 }
-
-export default App;
