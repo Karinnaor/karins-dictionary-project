@@ -11,12 +11,10 @@ export default function Meaning(props) {
           <div key={index}>
             <ul>
               <li>
-                <p>
-                  <strong>Definition:</strong> {definition.definition}
-                  <br />
-                  <em>{definition.example}</em>
-                  <Synonyms synonyms={definition.synonyms} />
-                </p>
+                <strong>Definition:</strong> {definition.definition}
+                <br />
+                <em>{definition.example}</em>
+                <Synonyms synonyms={definition.synonyms} />
               </li>
             </ul>
           </div>
