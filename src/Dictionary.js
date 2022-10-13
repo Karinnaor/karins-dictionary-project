@@ -18,20 +18,20 @@ export default function Dictionary(props) {
     setPhotos(response.data.photos);
   }
 
-  function search() {
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
+  function search(searchTerm) {
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchTerm}`;
     axios.get(apiUrl).then(handleDictionaryResponse);
 
     let pexelsApiKey =
       "563492ad6f91700001000001d6539663b196434eaa66983c341f78b5";
-    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=9`;
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${searchTerm}&per_page=9`;
     let headers = { Authorization: `Bearer ${pexelsApiKey}` };
     axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    search();
+    search(event.target[0].value);
   }
 
   function handleKeywordChange(event) {
@@ -40,7 +40,12 @@ export default function Dictionary(props) {
 
   function load() {
     setLoaded(true);
-    search();
+    search(keyword);
+  }
+
+  function updateInputAndSearch(newKeyword) {
+    setKeyword(newKeyword);
+    search(newKeyword);
   }
 
   if (loaded) {
@@ -53,6 +58,7 @@ export default function Dictionary(props) {
               type="search"
               onChange={handleKeywordChange}
               defaultValue={props.defaultKeyword}
+              value={keyword}
             />
           </form>
           <div className="hint">
@@ -60,7 +66,10 @@ export default function Dictionary(props) {
             etc.
           </div>
         </section>
-        <Results results={results} />
+        <Results
+          results={results}
+          updateInputAndSearch={updateInputAndSearch}
+        />
         <Photos photos={photos} />
       </div>
     );

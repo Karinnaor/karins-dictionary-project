@@ -14,7 +14,10 @@ export default function Meaning(props) {
           </div>
         );
       })}
-      <Synonyms synonyms={props.meaning.synonyms} />
+      <Synonyms
+        synonyms={props.meaning.synonyms}
+        updateInputAndSearch={props.updateInputAndSearch}
+      />
     </div>
   );
 }
