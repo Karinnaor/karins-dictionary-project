@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Results from "./Results";
-import Photos from "./Photos";
-import axios from "axios";
+import Results from "./Results/Results";
+import Photos from "./Photos/Photos";
 import "./Dictionary.css";
+import { fetchDefinition, fetchImages } from "./apiUtils";
+import Search from "./Search";
 
 export default function Dictionary(props) {
   let [keyword, setKeyword] = useState(props.defaultKeyword);
@@ -19,14 +20,9 @@ export default function Dictionary(props) {
   }
 
   function search(searchTerm) {
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchTerm}`;
-    axios.get(apiUrl).then(handleDictionaryResponse);
+    fetchDefinition(searchTerm).then(handleDictionaryResponse);
 
-    let pexelsApiKey =
-      "563492ad6f91700001000001d6539663b196434eaa66983c341f78b5";
-    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${searchTerm}&per_page=9`;
-    let headers = { Authorization: `Bearer ${pexelsApiKey}` };
-    axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
+    fetchImages(searchTerm).then(handlePexelsResponse);
   }
 
   function handleSubmit(event) {
@@ -51,21 +47,12 @@ export default function Dictionary(props) {
   if (loaded) {
     return (
       <div className="Dictionary">
-        <section>
-          <h1>What word do you want to look up?</h1>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="search"
-              onChange={handleKeywordChange}
-              defaultValue={props.defaultKeyword}
-              value={keyword}
-            />
-          </form>
-          <div className="hint">
-            <strong>suggested words:</strong> creative, developer, surfing, key,
-            etc.
-          </div>
-        </section>
+        <Search
+          handleSubmit={handleSubmit}
+          handleKeywordChange={handleKeywordChange}
+          defaultKeyword={props.defaultKeyword}
+          keyword={keyword}
+        />
         <Results
           results={results}
           updateInputAndSearch={updateInputAndSearch}

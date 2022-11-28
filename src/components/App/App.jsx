@@ -1,5 +1,5 @@
-import dictionary_logo from "./dictionary_logo.png";
-import Dictionary from "./Dictionary";
+import dictionary_logo from "../../assets/dictionary_logo.png";
+import Dictionary from "../Dictionary/Dictionary";
 import "./App.css";
 
 export default function App() {
