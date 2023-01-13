@@ -12,5 +12,5 @@ In this user-friendly app you can enter any word you wish to clarify, and it wil
 ![Screenshot_20230112_104900](https://user-images.githubusercontent.com/109036074/212020684-76caaa75-2d5c-4c45-aa5b-dc96dbe21088.png)
 
 
-## Come check it out:
+## Check it out here:
 https://cheery-taiyaki-1bfa6d.netlify.app/
