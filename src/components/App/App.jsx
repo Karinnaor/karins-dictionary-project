@@ -14,7 +14,7 @@ export default function App() {
           ></img>
         </header>
         <main>
-          <Dictionary defaultKeyword="sunset" />
+          <Dictionary defaultKeyword="writer" />
         </main>
         <footer className="App-footer text-center">
           Coded by Karin Naor and is
