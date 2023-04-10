@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Results from "./Results/Results";
-import Photos from "./Photos/Photos";
+import Photos from "./Results/Photos/Photos";
 import "./Dictionary.css";
 import { fetchDefinition, fetchImages } from "./apiUtils";
 import Search from "./Search";
